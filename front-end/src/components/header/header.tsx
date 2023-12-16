@@ -4,7 +4,11 @@ import { User } from "react-feather";
 import { Divider, Stepper } from "@chakra-ui/react";
 import { Providers } from "@/app/providers";
 
-export default function Header() {
+interface HeaderProps {
+  name: string;
+}
+
+export default function Header({name}: {name: string}) {
   return (
     <>
       <Providers>
@@ -12,7 +16,7 @@ export default function Header() {
           <div className={styles.userPicture}>
             <User width={50} height={50} />
           </div>
-          <p className={styles.userName}>Enzo Turano</p>
+          <p className={styles.userName}>{name}</p>
         </div>
         <Divider />
       </Providers>

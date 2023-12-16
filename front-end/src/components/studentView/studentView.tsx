@@ -19,20 +19,9 @@ import {
 } from "@chakra-ui/react";
 import styles from "./studentView.module.css";
 import { FC } from "react";
-
+import { institution } from "@/app/services/student";
 interface StudentViewProps {
   intitutions: institution[];
-}
-
-export interface institution {
-  name: string;
-  Series: Array<serie>;
-}
-
-export interface serie {
-  title: string;
-  status: string;
-
 }
 
 const StudentView: FC<StudentViewProps> = ({ intitutions }) => {
