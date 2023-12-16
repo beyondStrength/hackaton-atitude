@@ -1,3 +1,4 @@
+'use client'
 import { User } from "react-feather";
 import styles from "./student.module.css";
 

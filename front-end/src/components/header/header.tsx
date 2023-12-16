@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import styles from "./header.module.css";
 import { User } from "react-feather";

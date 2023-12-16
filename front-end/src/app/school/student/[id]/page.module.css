@@ -1,0 +1,13 @@
+.addCertification {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
