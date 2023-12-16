@@ -21,6 +21,7 @@ import {
 import styles from "./studentView.module.css";
 import { FC } from "react";
 import { institution } from "@/app/services/student";
+import { X } from "react-feather";
 interface StudentViewProps {
   intitutions: institution[];
 }
@@ -33,12 +34,12 @@ const StudentView: FC<StudentViewProps> = ({ intitutions }) => {
           <div>
             <p className={styles.institution}>Instituições</p>
           </div>
-          {intitutions.map((data) => {
+          {intitutions.map((data, index) => {
             const stepIndex = data.Certification.filter(x => x.status == 'Aprovado').length
             return (
               <>
-                <Box borderWidth={2} borderRadius={15} marginBottom={5}>
-                  <Accordion allowMultiple allowToggle>
+                <Box key={index} borderWidth={2} borderRadius={15} marginBottom={5}>
+                  <Accordion allowToggle>
                     <AccordionItem>
                       <AccordionButton>
                         <Box as="span" flex="1" textAlign="left">

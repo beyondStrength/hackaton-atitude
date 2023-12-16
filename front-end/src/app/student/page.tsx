@@ -65,6 +65,7 @@ export default function UserPage() {
   ];
   return (
     <>
+    <Header img name="Enzo Turano"></Header>
       <StudentView intitutions={institutions}/>
     </>
   );
