@@ -18,7 +18,7 @@ export default function Header({name}: {name: string}) {
           </div>
           <p className={styles.userName}>{name}</p>
         </div>
-        <Divider />
+        <Divider borderWidth={2} />
       </Providers>
     </>
   );
