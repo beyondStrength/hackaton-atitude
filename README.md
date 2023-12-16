@@ -51,9 +51,7 @@ http://localhost:3000/api#/
 
 ## App Journey
 
-```
-
-```
+[Clique neste link para baixar nossa jornada do usuário](https://cdn.discordapp.com/attachments/1185411603869470763/1185548890376773632/2023-12-16_08-46-54.mkv?ex=65900371&is=657d8e71&hm=fb244144854b87daa6101b087aeee7e248c706f3a0dd57396d719c9783deb03b&)
 
 ## Pitch Presentation
 
