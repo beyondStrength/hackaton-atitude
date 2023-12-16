@@ -16,7 +16,7 @@ export default function Home({ params }: { params: { id: string } }) {
   return (
     <>
       <Providers>
-        <Header name={student.name}></Header>
+        <Header backButton name={student.name}></Header>
         <StudentView intitutions={student?.institutions}></StudentView>
       </Providers>
     </>

@@ -2,19 +2,17 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { Providers } from "./providers";
-import { Stepper, Switch } from "@chakra-ui/react";
-import Header from "../components/header/header";
-import UserPage from "./student/page";
+import { Button, Link, Stepper, Switch } from "@chakra-ui/react";
 
 export default function Home() {
   return (
     <>
       <Providers>
-        <Header img name="Enzo Turano"></Header>
-        <div>
-          <UserPage>
-            
-          </UserPage>
+        <div className={styles.container}>
+        <div className={styles.content}>
+          <Link href="./student" width="100%"><Button className={styles.button} colorScheme='blue'>Estudante</Button></Link>
+          <Link href="./school" width="100%"><Button className={styles.button} colorScheme='blue'>Organização</Button></Link>
+        </div>
         </div>
       </Providers>
     </>

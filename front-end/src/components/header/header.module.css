@@ -14,3 +14,7 @@
     align-items: center;
     padding: 20px;
 }
+.backButton {
+    position: fixed;
+    left: 30px;
+}
