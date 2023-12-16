@@ -1,136 +1,137 @@
 "use-client";
 import Image from "next/image";
 import styles from "./page.module.css";
-import {
-  Switch,
-  Step,
-  StepDescription,
-  StepIcon,
-  StepIndicator,
-  StepNumber,
-  StepSeparator,
-  StepStatus,
-  StepTitle,
-  Stepper,
-  useSteps,
-  Box,
-  chakra,
-  Accordion,
-} from "@chakra-ui/react";
 import Header from "@/components/header/header";
 import { Providers } from "../providers";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionIcon,
+  AccordionButton,
+  AccordionPanel,
+  Stepper,
+  Step,
+  StepIndicator,
+  StepStatus,
+  StepIcon,
+  StepNumber,
+  StepTitle,
+  StepDescription,
+  StepSeparator,
+  Box,
+} from "@chakra-ui/react";
 
 enum Organization {
   AFONSO = 1,
   NAVE = 2,
 }
 
-const series = [
-  {
-    title: "Sexto",
-    description: "Aprovado",
-    organization: Organization.AFONSO,
-  },
-  {
-    title: "Sétimo",
-    description: "Aprovado",
-    organization: Organization.AFONSO,
-  },
-  {
-    title: "Oitavo",
-    description: "Aprovado",
-    organization: Organization.AFONSO,
-  },
-  { title: "Nono", description: "Aprovado", organization: Organization.AFONSO },
-  {
-    title: "Primeiro",
-    description: "Aprovado",
-    organization: Organization.NAVE,
-  },
-  {
-    title: "Segundo",
-    description: "Aprovado",
-    organization: Organization.NAVE,
-  },
-  {
-    title: "Terceiro",
-    description: "Cursando",
-    organization: Organization.NAVE,
-  },
-];
+interface level {
+  institutions: institution[];
+}
+
+interface institution {
+  name: string;
+  Series: Array<serie>;
+}
+
+interface serie {
+  title: string;
+  status: string;
+}
 
 export default function UserPage() {
+  const level: level = {
+    institutions: [
+      {
+        name: "Afonso Pena",
+        Series: [
+          {
+            title: "Sexto",
+            status: "Aprovado",
+          },
+          {
+            title: "Sétimo",
+            status: "Aprovado",
+          },
+          {
+            title: "Oitavo",
+            status: "Aprovado",
+          },
+          {
+            title: "Nono",
+            status: "Aprovado",
+          },
+        ],
+      },
+      {
+        name: "Nave Rio",
+        Series: [
+          {
+            title: "Primeiro",
+            status: "Aprovado",
+          },
+          {
+            title: "Segundo",
+            status: "Cursando",
+          },
+          {
+            title: "Terceiro",
+            status: "A seguir",
+          },
+        ],
+      },
+    ],
+  };
   return (
     <>
       <Providers>
         <div>
-          <p className={styles.schoolType}>Ensino Fundamental</p>
+          <p className={styles.schoolType}>Instituições</p>
         </div>
-        <div>
-          <Accordion>
-            <p className={styles.school}>Afonso Pena</p>
-            <Stepper
-              index={4}
-              orientation="vertical"
-              height="400px"
-              gap={0}
-              marginLeft={6}
-              marginTop={20}
-            >
-              {series.map((step, index) => (
-                <Step key={index}>
-                  <StepIndicator>
-                    <StepStatus
-                      complete={<StepIcon />}
-                      incomplete={<StepNumber />}
-                      active={<StepNumber />}
-                    />
-                  </StepIndicator>
+        {level.institutions.map((data) => {
+          return (
+            <>
+              <Accordion allowMultiple allowToggle>
+                <AccordionItem>
+                  <AccordionButton>
+                    <Box as="span" flex="1" textAlign="left">
+                      {data.name}
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
 
-                  <Box flexShrink="0">
-                    <StepTitle>{step.title}</StepTitle>
-                    <StepDescription>{step.description}</StepDescription>
-                  </Box>
-
-                  <StepSeparator />
-                </Step>
-              ))}
-            </Stepper>
-          </Accordion>
-        </div>
-        <div>
-          <p className={styles.schoolType}>Ensino Médio</p>
-        </div>
-        <div>
-          <p className={styles.school}>NAVE Rio</p>
-        </div>
-        <Stepper
-          index={0}
-          orientation="vertical"
-          height="400px"
-          gap={0}
-          marginLeft={6}
-          marginTop={20}
-        >
-          {series.map((step, index) => (
-            <Step key={index}>
-              <StepIndicator>
-                <StepStatus
-                  complete={<StepIcon />}
-                  incomplete={<StepNumber />}
-                  active={<StepNumber />}
-                />
-              </StepIndicator>
-
-              <Box flexShrink="0">
-                <StepTitle>{step.title}</StepTitle>
-                <StepDescription>{step.description}</StepDescription>
-              </Box>
-
-              <StepSeparator />
-            </Step>
-          ))}
-        </Stepper>
+                  <AccordionPanel>
+                    <Stepper
+                      index={4}
+                      orientation="vertical"
+                      height="400px"
+                      gap={0}
+                      marginLeft={6}
+                    >
+                      {data.Series.map((step, index) => (
+                        <Step key={index}>
+                          <StepIndicator>
+                            <StepStatus
+                              complete={<StepIcon />}
+                              incomplete={<StepNumber />}
+                              active={<StepNumber />}
+                            />
+                          </StepIndicator>
+                          <Box flexShrink="0">
+                            <StepTitle>{step.title}</StepTitle>
+                            <StepDescription>{step.status}</StepDescription>
+                          </Box>
+                          <StepSeparator />
+                        </Step>
+                      ))}
+                    </Stepper>
+                  </AccordionPanel>
+                </AccordionItem>
+              </Accordion>
+            </>
+          );
+        })}
       </Providers>
     </>
   );
