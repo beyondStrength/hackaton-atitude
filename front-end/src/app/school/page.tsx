@@ -6,11 +6,19 @@ import Header from "@/components/header/header";
 import { Providers } from "../providers";
 import UserPage from "../student/page";
 
+const students = [
+  {
+    name: 'Enzo Turano',
+    id: 1
+  }
+]
+
 export default function Home() {
+  ``
   return (
     <>
       <Providers>
-        <Header></Header>
+        <Header name="test"></Header>
         <div>
           
         </div>
