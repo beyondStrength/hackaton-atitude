@@ -1,4 +1,4 @@
-"use-client";
+"use client";
 import Image from "next/image";
 import styles from "./page.module.css";
 import Header from "@/components/header/header";
@@ -21,14 +21,51 @@ import {
   Box,
 } from "@chakra-ui/react";
 import StudentView from "@/components/studentView/studentView";
-import { getStudentById } from "../services/student";
 
 export default function UserPage() {
-  const student = getStudentById(2);
+  const institutions = [
+    {
+      name: "Afonso Pena",
+      Certification: [
+        {
+          title: "Sexto",
+          status: "Aprovado",
+        },
+        {
+          title: "Sétimo",
+          status: "Aprovado",
+        },
+        {
+          title: "Oitavo",
+          status: "Aprovado",
+        },
+        {
+          title: "Nono",
+          status: "Aprovado",
+        },
+      ],
+    },
+    {
+      name: "Nave Rio",
+      Certification: [
+        {
+          title: "Primeiro",
+          status: "Aprovado",
+        },
+        {
+          title: "Segundo",
+          status: "Cursando",
+        },
+        {
+          title: "Terceiro",
+          status: "A seguir",
+        },
+      ],
+    },
+  ];
   return (
     <>
-      <Header img name={student.name}></Header>
-      <StudentView intitutions={student.institutions} />
+      <StudentView intitutions={institutions}/>
     </>
   );
 }
