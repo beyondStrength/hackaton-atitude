@@ -1,7 +1,8 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { StudentInterface } from '../model/StudentInterface';
 import { CreateStudentRequest } from '../model/CreateStudentRequest';
 import { StudentRepository } from '../repository/studentRepository';
+import { UpdateStudentRequest } from '../model/UpdateStudentRequest';
 
 @Injectable()
 export class ServiceService {
@@ -24,4 +25,33 @@ export class ServiceService {
         // retorna o id
         return newStudent.id;
     } 
+
+    update(request: UpdateStudentRequest, id: string) {
+
+        // TODO: Buscar na base de dados da escola
+        let studentForUpdate = this.studentRepository.getById(id);
+
+        // Alterar apenas dados enviados no request
+        if (request.documentNumber) {
+           studentForUpdate.documentNumber = request.documentNumber 
+        }
+        if (request.email) {
+            studentForUpdate.email = request.email
+        }
+        if (request.phone) {
+            studentForUpdate.phone = request.phone
+        }
+        if (request.legalRepresentative) {
+            studentForUpdate.legalRepresentative = request.legalRepresentative
+        }
+        if (request.name) {
+            studentForUpdate.name = request.name
+        }
+
+        // Salvar alteracoes no banco da escola
+        this.studentRepository.updateStudent(studentForUpdate);
+
+        // Enviar para alterar no banco scholarid
+        return bacenService.updateStudent(studentForUpdate)
+    }
 }

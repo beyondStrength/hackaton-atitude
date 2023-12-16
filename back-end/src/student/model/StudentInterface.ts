@@ -9,7 +9,7 @@ export interface StudentInterface {
     phone?: string
 }
 
-interface LegalRepresentativeInterface {
+export interface LegalRepresentativeInterface {
     id: string
     name: string
     documentNumber: string
