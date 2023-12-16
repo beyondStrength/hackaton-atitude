@@ -49,7 +49,7 @@ export default function Home({ params }: { params: { id: string } }) {
                 <Input value={certification} onChange={(event) => setCertification(event.target.value)} placeholder="Certificação"></Input>
                 <Input value={status} onChange={(event) => setStatus(event.target.value)} placeholder="Situação"></Input>
                 <Button onClick={() => {
-                  addCertification({title: certification, status: status}, 1, 'Nave Rio')
+                  addCertification({title: certification, status: status}, parseInt(id as string), 'Nave Rio')
                   setIsOpen(false)
                 }} colorScheme="blue">
                   Adicionar
