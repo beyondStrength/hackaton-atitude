@@ -2,11 +2,16 @@
     font-size: 2em;
 }
 .userPicture {
-    width: 50px
+    border-width: 1;
+    border-radius: 50%;
+    border: solid black 4px;
 }
 .container  {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    margin-top: 20px;
+    justify-content: flex-start;
+    gap: 20px;
+    align-items: center;
+    padding: 20px;
+    background-color: grey;
 }

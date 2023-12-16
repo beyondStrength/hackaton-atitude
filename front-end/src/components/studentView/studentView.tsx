@@ -15,74 +15,70 @@ import {
   StepDescription,
   StepSeparator,
   Box,
+  border,
 } from "@chakra-ui/react";
 import styles from "./studentView.module.css";
 import { FC } from "react";
-
+import { institution } from "@/app/services/student";
 interface StudentViewProps {
   intitutions: institution[];
-}
-
-export interface institution {
-  name: string;
-  Series: Array<serie>;
-}
-
-export interface serie {
-  title: string;
-  status: string;
 }
 
 const StudentView: FC<StudentViewProps> = ({ intitutions }) => {
   return (
     <>
       <Providers>
-        <div>
-          <p className={styles.schoolType}>Instituições</p>
-        </div>
-        {intitutions.map((data) => {
-          return (
-            <>
-              <Accordion allowMultiple allowToggle>
-                <AccordionItem>
-                  <AccordionButton>
-                    <Box as="span" flex="1" textAlign="left">
-                      {data.name}
-                    </Box>
-                    <AccordionIcon />
-                  </AccordionButton>
+        <div className={styles.content}>
+          <div>
+            <p className={styles.institution}>Instituições</p>
+          </div>
+          {intitutions.map((data) => {
+            const stepIndex = data.Series.filter(x => x.status == 'Aprovado').length
+            return (
+              <>
+                <Box borderWidth={2} borderRadius={15} marginBottom={5}>
+                  <Accordion allowMultiple allowToggle>
+                    <AccordionItem>
+                      <AccordionButton>
+                        <Box as="span" flex="1" textAlign="left">
+                          {data.name}
+                        </Box>
+                        <AccordionIcon />
+                      </AccordionButton>
 
-                  <AccordionPanel>
-                    <Stepper
-                      index={4}
-                      orientation="vertical"
-                      height="400px"
-                      gap={0}
-                      marginLeft={6}
-                    >
-                      {data.Series.map((step, index) => (
-                        <Step key={index}>
-                          <StepIndicator>
-                            <StepStatus
-                              complete={<StepIcon />}
-                              incomplete={<StepNumber />}
-                              active={<StepNumber />}
-                            />
-                          </StepIndicator>
-                          <Box flexShrink="0">
-                            <StepTitle>{step.title}</StepTitle>
-                            <StepDescription>{step.status}</StepDescription>
-                          </Box>
-                          <StepSeparator />
-                        </Step>
-                      ))}
-                    </Stepper>
-                  </AccordionPanel>
-                </AccordionItem>
-              </Accordion>
-            </>
-          );
-        })}
+                      <AccordionPanel>
+                        <Stepper
+                          index={stepIndex}
+                          orientation="vertical"
+                          height="400px"
+                          gap={0}
+                          marginLeft={6}
+                        >
+                          {data.Series.map((step, index) => (
+                            <Step key={index}>
+                              <StepIndicator>
+                                <StepStatus
+                                  complete={<StepIcon />}
+                                  incomplete={<StepNumber />}
+                                  active={<StepNumber />}
+                                />
+                              </StepIndicator>
+                              <Box flexShrink="0">
+                                <StepTitle>{step.title}</StepTitle>
+                                <StepDescription>{step.status}</StepDescription>
+                              </Box>
+                              <StepSeparator />
+                            </Step>
+                          ))}
+                        </Stepper>
+                      </AccordionPanel>
+                    </AccordionItem>
+                  </Accordion>
+                </Box>
+              </>
+            );
+          })}
+        </div>
       </Providers>
     </>
   );
