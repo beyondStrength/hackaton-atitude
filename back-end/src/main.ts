@@ -9,8 +9,8 @@ async function bootstrap() {
     .setTitle('scholar.id')
     .setDescription('Sua API para convergência de dados educacionais')
     .setVersion('1.0')
-    .addTag('student')
     .build();
+    
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 

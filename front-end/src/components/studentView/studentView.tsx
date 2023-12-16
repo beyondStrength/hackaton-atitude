@@ -1,3 +1,4 @@
+'use client'
 import { Providers } from "@/app/providers";
 import {
   Accordion,
