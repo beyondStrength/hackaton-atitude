@@ -34,7 +34,7 @@ const StudentView: FC<StudentViewProps> = ({ intitutions }) => {
             <p className={styles.institution}>Instituições</p>
           </div>
           {intitutions.map((data) => {
-            const stepIndex = data.Series.filter(x => x.status == 'Aprovado').length
+            const stepIndex = data.Certification.filter(x => x.status == 'Aprovado').length
             return (
               <>
                 <Box borderWidth={2} borderRadius={15} marginBottom={5}>
@@ -55,7 +55,7 @@ const StudentView: FC<StudentViewProps> = ({ intitutions }) => {
                           gap={0}
                           marginLeft={6}
                         >
-                          {data.Series.map((step, index) => (
+                          {data.Certification.map((step, index) => (
                             <Step key={index}>
                               <StepIndicator>
                                 <StepStatus
