@@ -9,7 +9,9 @@ export default function Header() {
     <>
       <Providers>
         <div className={styles.container}>
-          <User width={50} height={50} />
+          <div className={styles.userPicture}>
+            <User width={50} height={50} />
+          </div>
           <p className={styles.userName}>Enzo Turano</p>
         </div>
         <Divider />
