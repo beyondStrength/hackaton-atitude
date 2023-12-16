@@ -3,33 +3,25 @@ import { StudentInterface } from '../model/StudentInterface';
 import { CreateStudentRequest } from '../model/CreateStudentRequest';
 import { StudentRepository } from '../repository/studentRepository';
 import { UpdateStudentRequest } from '../model/UpdateStudentRequest';
+import { ScholaridClient } from '../clients/ScholaridClient';
 
 @Injectable()
-export class ServiceService {
+export class StudentService {
     private studentRepository: StudentRepository
-    
+    private scholaridClient: ScholaridClient
     async create(student: CreateStudentRequest): Promise<Pick<StudentInterface, "id">> {
-        /* 
-        o create do back vai dar um get no aluno na web3, devolver o hash e
-        ai ele linka o aluno da escola com o aluno na web3
-        o bacen sempre devolve o hash do aluno na web3
-        */
-        // Cria o aluno no banco de dados da escola
-        const newStudent = await this.studentRepository.create(student)
-        // Busca o hash web3 
+        const newStudent: StudentInterface = await this.studentRepository.create(student)
+        const studentOnBCE = await this.scholaridClient.getById(newStudent)
+        newStudent.hash = studentOnBCE.id
+        await this.scholaridClient.update(newStudent)
 
-        // Adiciona o hash no objeto aluno e faz o patch no db
-        newStudent.hash = bacen.id
-        patchQueryDatabase(newStudent)
-
-        // retorna o id
-        return newStudent.id;
+        return newStudent;
     } 
 
-    update(request: UpdateStudentRequest, id: string) {
+    async update(request: UpdateStudentRequest): Promise<StudentInterface> {
 
         // TODO: Buscar na base de dados da escola
-        let studentForUpdate = this.studentRepository.getById(id);
+        let studentForUpdate = await this.studentRepository.getById(request.id);
 
         // Alterar apenas dados enviados no request
         if (request.documentNumber) {
@@ -48,10 +40,10 @@ export class ServiceService {
             studentForUpdate.name = request.name
         }
 
-        // Salvar alteracoes no banco da escola
-        this.studentRepository.updateStudent(studentForUpdate);
+        // Atualiza no DB da escola
+        await this.studentRepository.update(studentForUpdate);
 
-        // Enviar para alterar no banco scholarid
-        return bacenService.updateStudent(studentForUpdate)
+        // Atualiza o dnft
+        return await this.scholaridClient.update(studentForUpdate)
     }
 }
