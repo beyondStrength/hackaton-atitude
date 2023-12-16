@@ -25,7 +25,7 @@ $ npm run start
 Por fim, siga para o frontend e inicie a aplicação.
 ```bash
 $ cd front-end
-$ npm run start
+$ yarn dev
 
 ```
 
