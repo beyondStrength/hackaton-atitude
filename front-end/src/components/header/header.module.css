@@ -1,0 +1,12 @@
+.userName {
+    font-size: 2em;
+}
+.userPicture {
+    width: 50px
+}
+.container  {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 20px;
+}

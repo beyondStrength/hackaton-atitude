@@ -1,10 +1,10 @@
 "use-client";
 import Image from "next/image";
 import styles from "./page.module.css";
-import { Providers } from "./providers";
 import { Stepper, Switch } from "@chakra-ui/react";
-import Header from "../components/header/header";
-import UserPage from "./student/page";
+import Header from "@/components/header/header";
+import { Providers } from "../providers";
+import UserPage from "../student/page";
 
 export default function Home() {
   return (
@@ -12,9 +12,7 @@ export default function Home() {
       <Providers>
         <Header></Header>
         <div>
-          <UserPage>
-            
-          </UserPage>
+          
         </div>
       </Providers>
     </>
