@@ -9,16 +9,24 @@ $ npm install
 ```
 
 ## Running the app
-
+Começando pelo cryptum-backend, rode o seguinte comando para buildar a aplicação:
 ```bash
-# development
+$ cd cryptum-backend
+$ npm run start
+```
+
+Depois siga para o back-end e rode-o também:
+```bash
+$ cd back-end
 $ npm run start
 
-# watch mode
-$ npm run start:dev
+```
 
-# production mode
-$ npm run start:prod
+Por fim, siga para o frontend e inicie a aplicação.
+```bash
+$ cd front-end
+$ npm run start
+
 ```
 
 ## Test
