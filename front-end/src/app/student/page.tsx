@@ -21,51 +21,14 @@ import {
   Box,
 } from "@chakra-ui/react";
 import StudentView from "@/components/studentView/studentView";
+import { getStudentById } from "../services/student";
 
 export default function UserPage() {
-  const institutions = [
-    {
-      name: "Afonso Pena",
-      Series: [
-        {
-          title: "Sexto",
-          status: "Aprovado",
-        },
-        {
-          title: "Sétimo",
-          status: "Aprovado",
-        },
-        {
-          title: "Oitavo",
-          status: "Aprovado",
-        },
-        {
-          title: "Nono",
-          status: "Aprovado",
-        },
-      ],
-    },
-    {
-      name: "Nave Rio",
-      Series: [
-        {
-          title: "Primeiro",
-          status: "Aprovado",
-        },
-        {
-          title: "Segundo",
-          status: "Cursando",
-        },
-        {
-          title: "Terceiro",
-          status: "A seguir",
-        },
-      ],
-    },
-  ];
+  const student = getStudentById(2);
   return (
     <>
-      <StudentView intitutions={institutions}/>
+      <Header img name={student.name}></Header>
+      <StudentView intitutions={student.institutions} />
     </>
   );
 }

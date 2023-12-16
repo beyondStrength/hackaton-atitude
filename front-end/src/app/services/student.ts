@@ -6,14 +6,14 @@ interface Student {
 
 export interface institution {
     name: string;
-    Series: Array<serie>;
-  }
-  
-  export interface serie {
+    Certification: Array<serie>;
+}
+
+export interface serie {
     title: string;
     status: string;
-  }
-  
+}
+
 
 const students: Student[] = [
     {
@@ -22,7 +22,7 @@ const students: Student[] = [
         institutions: [
             {
                 name: "Afonso Pena",
-                Series: [
+                Certification: [
                     {
                         title: "Sexto",
                         status: "Aprovado",
@@ -43,7 +43,7 @@ const students: Student[] = [
             },
             {
                 name: "Nave Rio",
-                Series: [
+                Certification: [
                     {
                         title: "Primeiro",
                         status: "Aprovado",
@@ -66,7 +66,7 @@ const students: Student[] = [
         institutions: [
             {
                 name: "Prioridade Hum",
-                Series: [
+                Certification: [
                     {
                         title: "Sexto",
                         status: "Aprovado",
@@ -91,7 +91,7 @@ const students: Student[] = [
             },
             {
                 name: "Nave Rio",
-                Series: [
+                Certification: [
                     {
                         title: "Primeiro",
                         status: "Aprovado",
@@ -117,9 +117,16 @@ export function getAllStudents() {
 export function getStudentById(id: number): Student {
     const student = students.find(x => x.id == id);
     if (!student?.id) {
-        return ({id: 0, name: '', institutions: []});
+        return ({ id: 0, name: '', institutions: [] });
     }
     return (student);
 }
 
+export function addCertification(certification: { title: string, status: string }, id: number, institution: string) {
+    const studentIndex = students.findIndex(x => x.id == id);
+    const institutionIndex = students[studentIndex].institutions.findIndex(x => x.name == institution);
+    const certificationNew = students[studentIndex].institutions[institutionIndex].Certification;
+    certificationNew.push(certification);
+    students[studentIndex].institutions[institutionIndex] = { ...students[studentIndex].institutions[institutionIndex], name: institution, Certification: certificationNew };
+}
 

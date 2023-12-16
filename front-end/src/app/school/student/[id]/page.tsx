@@ -16,19 +16,21 @@ import {
 import Header from "@/components/header/header";
 import UserPage from "./page";
 import { Providers } from "@/app/providers";
-import { getStudentById } from "@/app/services/student";
+import { addCertification, getStudentById } from "@/app/services/student";
 import StudentView from "@/components/studentView/studentView";
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 
 export default function Home({ params }: { params: { id: string } }) {
   const id = params.id;
   const student = getStudentById(parseInt(id as string));
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [certification, setCertification] = useState('')
+  const [status, setStatus] = useState('')
   console.log(student);
   return (
     <>
       <Providers>
-        <Header name={student.name}></Header>
+        <Header backButton name={student.name}></Header>
         <StudentView intitutions={student?.institutions}></StudentView>
         <div
           onClick={() => setIsOpen(true)}
@@ -44,9 +46,12 @@ export default function Home({ params }: { params: { id: string } }) {
             <ModalCloseButton onClick={() => setIsOpen(false)} />
             <ModalBody>
               <div className={styles.modal}>
-                <Input placeholder="Certificação"></Input>
-                <Input placeholder="Situação"></Input>
-                <Button onClick={() => setIsOpen(false)} colorScheme="blue">
+                <Input value={certification} onChange={(event) => setCertification(event.target.value)} placeholder="Certificação"></Input>
+                <Input value={status} onChange={(event) => setStatus(event.target.value)} placeholder="Situação"></Input>
+                <Button onClick={() => {
+                  addCertification({title: certification, status: status}, 1, 'Nave Rio')
+                  setIsOpen(false)
+                }} colorScheme="blue">
                   Adicionar
                 </Button>
               </div>
