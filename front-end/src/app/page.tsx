@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Providers>
-        <Header name="Enzo Turano"></Header>
+        <Header img name="Enzo Turano"></Header>
         <div>
           <UserPage>
             
