@@ -1,0 +1,15 @@
+.card {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    border: solid black 1px;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.student {
+    font-size: 24px;
+}
