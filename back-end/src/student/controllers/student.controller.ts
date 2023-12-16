@@ -3,6 +3,7 @@ import { StudentService } from '../service/student.service';
 import { StudentInterface } from '../model/StudentInterface';
 import { CreateStudentRequest } from '../model/CreateStudentRequest';
 import { UpdateStudentRequest } from '../model/UpdateStudentRequest';
+
 @Controller('student')
 export class StudentController {
     private studentService: StudentService
