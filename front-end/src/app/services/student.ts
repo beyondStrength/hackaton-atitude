@@ -24,19 +24,19 @@ const students: Student[] = [
                 name: "Afonso Pena",
                 Certification: [
                     {
-                        title: "Sexto",
+                        title: "Sexto Ano",
                         status: "Aprovado",
                     },
                     {
-                        title: "Sétimo",
+                        title: "Sétimo Ano",
                         status: "Aprovado",
                     },
                     {
-                        title: "Oitavo",
+                        title: "Oitavo Ano",
                         status: "Aprovado",
                     },
                     {
-                        title: "Nono",
+                        title: "Nono Ano",
                         status: "Aprovado",
                     },
                 ],
@@ -45,16 +45,12 @@ const students: Student[] = [
                 name: "Nave Rio",
                 Certification: [
                     {
-                        title: "Primeiro",
+                        title: "Primeiro Ano",
                         status: "Aprovado",
                     },
                     {
-                        title: "Segundo",
-                        status: "Cursando",
-                    },
-                    {
-                        title: "Terceiro",
-                        status: "A seguir",
+                        title: "Segundo Ano",
+                        status: "Aprovado",
                     },
                 ],
             },
@@ -68,23 +64,23 @@ const students: Student[] = [
                 name: "Prioridade Hum",
                 Certification: [
                     {
-                        title: "Sexto",
+                        title: "Sexto Ano",
                         status: "Aprovado",
                     },
                     {
-                        title: "Sétimo",
+                        title: "Sétimo Ano",
                         status: "Aprovado",
                     },
                     {
-                        title: "Oitavo",
+                        title: "Oitavo Ano",
                         status: "Aprovado",
                     },
                     {
-                        title: "Nono",
+                        title: "Nono Ano",
                         status: "Aprovado",
                     },
                     {
-                        title: "Primeiro",
+                        title: "Primeiro Ano",
                         status: "Aprovado",
                     },
                 ],
@@ -93,16 +89,12 @@ const students: Student[] = [
                 name: "Nave Rio",
                 Certification: [
                     {
-                        title: "Primeiro",
+                        title: "Primeiro Ano",
                         status: "Aprovado",
                     },
                     {
-                        title: "Segundo",
+                        title: "Segundo Ano",
                         status: "Aprovado",
-                    },
-                    {
-                        title: "Terceiro",
-                        status: "Cursando",
                     },
                 ],
             },
